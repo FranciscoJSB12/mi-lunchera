@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, PrimaryButton } from "../components";
+import { colors } from "../util";
+
+interface Inputs {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
 
 export const SignUpScreen = () => {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({} as Inputs);
 
   const changeTextHandler = (name: string, value: string) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
@@ -13,20 +21,24 @@ export const SignUpScreen = () => {
     <View style={styles.container}>
       <Input
         placeholder="Nombre"
-        onChangeText={(value) => changeTextHandler("nombre", value)}
+        onChangeText={(value) => changeTextHandler("name", value)}
+        value={inputs.name || ""}
       />
       <Input
         placeholder="Apellido"
-        onChangeText={(value) => changeTextHandler("appelido", value)}
+        onChangeText={(value) => changeTextHandler("lastName", value)}
+        value={inputs.lastName || ""}
       />
       <Input
         placeholder="Correo electrónico"
-        onChangeText={(value) => changeTextHandler("correo", value)}
+        onChangeText={(value) => changeTextHandler("email", value)}
+        value={inputs.email || ""}
       />
       <Input
         placeholder="Contraseña"
-        onChangeText={(value) => changeTextHandler("contraseña", value)}
+        onChangeText={(value) => changeTextHandler("password", value)}
         secureTextEntry={true}
+        value={inputs.password || ""}
       />
       <PrimaryButton pressHandler={() => console.log(inputs)}>
         Crear cuenta
@@ -38,7 +50,7 @@ export const SignUpScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

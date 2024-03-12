@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Text, View, Pressable, StyleSheet } from "react-native";
+import { colors } from "../../util";
 
 interface Props {
   pressHandler: () => void;
@@ -18,7 +19,7 @@ export const PrimaryButton = ({ pressHandler, children }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#1d4ed8",
+    backgroundColor: colors.blue,
     width: "95%",
     padding: 14,
     borderRadius: 8,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     textAlign: "center",
-    color: "#FFF",
+    color: colors.white,
     fontWeight: "500",
   },
 });
